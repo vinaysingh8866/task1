@@ -1,7 +1,7 @@
 
-# Stock Trading Backend
+# Twitter Backedend API
 
-Stock Trading Backend made with Python Flask 
+API for Twitter
 
 
 ## API Reference
