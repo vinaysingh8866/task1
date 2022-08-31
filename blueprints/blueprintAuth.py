@@ -74,7 +74,7 @@ def newToken():
     return jsonify({"token": token})
 
 
-@blueprint_auth.route("/api/logout/", methods=["POST"])
+@blueprint_auth.route("/api/logout", methods=["POST"])
 @jwt_required
 def logout():
     jti = get_raw_jwt()["jti"]

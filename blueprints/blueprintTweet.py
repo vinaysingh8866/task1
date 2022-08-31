@@ -51,7 +51,7 @@ def userTweets():
     with app.app_context():
         Tweet = current_app.config['tweet']
         try:
-            uid = request.json["uid"]
+            uid = get_jwt_identity()
             tweets = getUserAddedTweets(Tweet, uid)
             return jsonify(tweets)
         except:
