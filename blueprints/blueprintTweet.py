@@ -1,10 +1,6 @@
 from flask import Blueprint, request, jsonify,current_app
 from models.Tweet import addNewTweet, delAddedTweet, getAddedTweets, getUserAddedTweets, updateAddedTweet
-
-from models.User import addUser, getUsers
-import re
-from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity, \
-    jwt_refresh_token_required, create_refresh_token, get_raw_jwt
+from flask_jwt_extended import jwt_required, get_jwt_identity
 blueprint_tweet= Blueprint('blueprint_tweet', __name__)
 app = current_app
 
