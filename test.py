@@ -2,33 +2,40 @@ import json
 import pytest
 from app import app
 client = app.test_client()
-def test_register():
+
+
+def testRegister():
     response = client.post(
         "/api/register", json={
             "email": "vinaysingh8866@gmail.com",
             "upassword": "123456789",
             "uname": "vinaysingh"})
     assert response.status_code == 200
+    print("Testing Passed")
 
-def test_login():
+
+def testLogin():
     response = client.post(
         "/api/login", json={
             "email": "vinaysingh8866@gmail.com",
             "upassword": "123456789"})
     assert response.status_code == 200
+    print("Testing Passed")
 
-def add_tweet():
+
+def addTweet():
     login = client.post(
         "/api/login", json={
             "email": "vinaysingh8866@gmail.com",
             "upassword": "123456789"})
     token = login.json['token']
     response = client.post(
-        "/api/add_tweet",headers={"Authorization": "Bearer " + token}, json={
+        "/api/add_tweet", headers={"Authorization": "Bearer " + token}, json={
             "title": "vinaysingh8866@gmail.com",
             "content": "123456789"})
-    print(response.json)
     assert response.status_code == 200
+    print("Testing Passed")
+
 
 def userTweets():
     login = client.post(
@@ -37,24 +44,34 @@ def userTweets():
             "upassword": "123456789"})
     token = login.json['token']
     response = client.post(
-        "/api/user_tweets",headers={"Authorization": "Bearer " + token}, json={
+        "/api/user_tweets", headers={"Authorization": "Bearer " + token}, json={
             "uid": 1})
-    print(response.json)
+    assert response.status_code == 200
+    print("Testing Passed")
 
-def update_tweet():
+
+def updateTweet():
     login = client.post(
         "/api/login", json={
             "email": "vinaysingh8866@gmail.com",
             "upassword": "123456789"})
     token = login.json['token']
     response = client.post(
-        "/api/update_tweet/1",headers={"Authorization": "Bearer " + token}, json={
+        "/api/update_tweet/1", headers={"Authorization": "Bearer " + token}, json={
             "content": "123jhbljb456789kjhfkjhf"})
-    print(response.json)
     assert response.status_code == 200
+    print("Testing Passed")
 
-test_register()
-test_login()
-add_tweet()
-update_tweet()
-userTweets()
+def test():
+    print("--------------Testing Register---------------")
+    testRegister()
+    print("--------------Testing Login--------------")
+    testLogin()
+    print("--------------Testing Add Tweet--------------")
+    addTweet()
+    print("--------------Testing Update Tweet--------------")
+    updateTweet()
+    print("--------------Testing User Tweets--------------")
+    userTweets()
+
+test()
