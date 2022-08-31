@@ -18,13 +18,13 @@ def User(db):
 
 def getUsers(User):
     users = User.query.all()
-    return [{"id": i.uid, "username": i.uname, "email": i.email, "password": i.upassword} for i in users]
+    return [{"id": i.uid, "username": i.uname, "email": i.email, "upassword": i.upassword} for i in users]
 
 
 def getUser(User, uid):
     users = User.query.all()
     user = list(filter(lambda x: x.uid == uid, users))[0]
-    return {"id": user.id, "username": user.uname, "email": user.email, "password": user.upassword}
+    return {"id": user.id, "username": user.uname, "email": user.email, "upassword": user.upassword}
 
 
 def addUser(db,User, uname, email, upassword):
